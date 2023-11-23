@@ -49,6 +49,22 @@ class Retriever:
 
         return response
 
+    def get_all_sub_breeds(self, breed: str) -> dict:
+        """
+        Returns array of possible sub breeds associated with specified breed.
+
+        Returns:
+            dict: {
+                'success': bool,
+                'data': [sub_breeds_lst]
+            }
+        """
+
+        resource = f'/breed/{breed}/list'
+        response = self._make_request('GET', resource)
+
+        return response
+
     def get_random_image(self) -> dict:
         """
         Returns a single random image from the 'All Dogs' collection.
@@ -56,9 +72,7 @@ class Retriever:
         Returns:
             dict: {
                 'success': bool
-                'data': {
-                    'message': str
-                        }
+                'data': str
                 }
         """
 
@@ -76,31 +90,11 @@ class Retriever:
         Returns:
             dict: {
                 'success': bool,
-                'data': {
-                    'message': [image_lst]
-                    }
+                'data': [image_lst]
                 }
         """
 
         resource = f'/breed/{breed}/images'
-        response = self._make_request('GET', resource)
-
-        return response
-
-    def get_all_sub_breeds(self, breed: str) -> dict:
-        """
-        Returns array of possible sub breeds associated with specified breed.
-
-        Returns:
-            dict: {
-                'success': bool,
-                'data': {
-                    'message': [sub_breed_lst]
-                }
-            }
-        """
-
-        resource = f'/breed/{breed}/list'
         response = self._make_request('GET', resource)
 
         return response
