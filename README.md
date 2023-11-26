@@ -1,13 +1,13 @@
-# Retriever: A Python Wrapper for the Dog CEO API
+# RoverRetriever: A Python Wrapper for the Dog CEO API
 
-Retriever is a lightweight Python wrapper written to facilitate interaction with [Dog CEO's API](https://dog.ceo/dog-api/).
+RoverRetriever is a lightweight Python wrapper written to facilitate interaction with [Dog CEO's API](https://dog.ceo/dog-api/).
 
 ## Usage
 
 ### Initialize the client
 
 ```python
-from Retriever.retriever import Retriever
+from RoverRetriever.retriever import Retriever
 dog_api = Retriever()
 ```
 
