@@ -89,7 +89,7 @@ class RoverRetriever:
         else:
             resource = 'breeds/image/random'
 
-        response = self._make_request('GET', f'{resource}{"/" + quantity or ""}')
+        response = self._make_request('GET', f'{resource}/{quantity or ""}')
 
         return response
 
