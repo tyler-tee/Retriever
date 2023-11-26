@@ -82,6 +82,9 @@ class RoverRetriever:
                 }
         """
 
+        if quantity and quantity > 50:
+            quantity = 50
+
         if breed and sub_breed:
             resource = f'breed/{breed}/{sub_breed}/images/random'
         elif breed:
