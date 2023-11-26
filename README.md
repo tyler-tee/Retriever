@@ -23,7 +23,13 @@ breeds = dog_api.get_breeds()
 random_image = dog_api.get_random_image()
 ```
 
-### Get images by breed
+### Get a number of random dog images by breed
+
+```python
+random_image = dog_api.get_random_image(quantity=3, breed='hound')
+```
+
+### Get available images by breed
 
 ```python
 images = dog_api.get_images_by_breed('bulldog')
