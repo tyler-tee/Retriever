@@ -1,7 +1,7 @@
 import requests
 
 
-class Retriever:
+class RoverRetriever:
 
     def __init__(self):
         self.base_url = 'https://dog.ceo/api'
@@ -60,23 +60,36 @@ class Retriever:
             }
         """
 
-        resource = f'/breed/{breed}/list'
+        resource = f'breed/{breed}/list'
         response = self._make_request('GET', resource)
 
         return response
 
-    def get_random_image(self) -> dict:
+    def get_random_image(self, quantity: int = None,
+                         breed: str = None, sub_breed: str = None) -> dict:
         """
         Returns a single random image from the 'All Dogs' collection.
+
+        Args:
+            quantity (int): Number of images to return.
+            breed (str): Breed name (obtained via get_breeds())
+            sub_breed (str): Sub-breed name (obtained via get_all_sub_breeds())
 
         Returns:
             dict: {
                 'success': bool
-                'data': str
+                'data': str|[list of image urls]
                 }
         """
 
-        response = self._make_request('GET', 'breeds/image/random')
+        if breed and sub_breed:
+            resource = f'breed/{breed}/{sub_breed}/images/random'
+        elif breed:
+            resource = f'breed/{breed}/images/random'
+        else:
+            resource = 'breeds/image/random'
+
+        response = self._make_request('GET', f'{resource}{"/" + quantity or ""}')
 
         return response
 
@@ -95,6 +108,26 @@ class Retriever:
         """
 
         resource = f'/breed/{breed}/images'
+        response = self._make_request('GET', resource)
+
+        return response
+
+    def get_images_by_sub_breed(self, breed: str, sub_breed: str) -> dict:
+        """
+        Returns an array of all images from a specified sub-breed.
+
+        Args:
+            breed (str): Breed name (obtained via get_breeds())
+            sub_breed (str): Sub-breed name (obtained via get_all_sub_breeds())
+
+        Returns:
+            dict: {
+                'success': bool,
+                'data': [image_lst]
+                }
+        """
+
+        resource = f'/breed/{breed}/{sub_breed}/images'
         response = self._make_request('GET', resource)
 
         return response

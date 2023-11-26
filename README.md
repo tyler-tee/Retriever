@@ -7,8 +7,8 @@ RoverRetriever is a lightweight Python wrapper written to facilitate interaction
 ### Initialize the client
 
 ```python
-from RoverRetriever.retriever import Retriever
-dog_api = Retriever()
+from RoverRetriever.rover_retriever import RoverRetriever
+dog_api = RoverRetriever()
 ```
 
 ### Get a list of breeds
