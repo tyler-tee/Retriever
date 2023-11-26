@@ -1,2 +1,5 @@
 *.pyc
 /scratch
+build/
+dist/
+*.egg-info
