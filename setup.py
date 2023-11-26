@@ -7,7 +7,7 @@ with open(path.join(currrent_direct, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='RoverRetriever',
-    version='0.1.4',
+    version='0.1.5',
     url='https://github.com/tyler-tee/RoverRetriever',
     author='Tyler Talaga',
     author_email='ttalaga@wgu.edu',
